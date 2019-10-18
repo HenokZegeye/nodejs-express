@@ -1,0 +1,66 @@
+<% include ../partials/header %>
+<style>
+    .jumbotron{
+        width: 30%;
+    }
+    #programs{
+        padding-left:700px;
+    }
+    .row a{
+        color: #5bc0de;
+    }
+    .row a:hover{
+        color: darkcyan;
+    }
+    .ui.inverted.orange.buttons .button, .ui.inverted.orange.button{
+        color: #5bc0de !important;
+    }
+    .ui.inverted.orange.buttons .button, .ui.inverted.orange.button:hover{
+        color: white !important;
+    }
+    .ui.inverted.red.buttons .button, .ui.inverted.red.button{
+        color: #5bc0de !important;
+    }
+    .ui.inverted.red.buttons .button, .ui.inverted.red.button:hover{
+        color: white !important;
+    }
+
+</style>
+
+<div class="ui container">
+    <div class="ui grid">
+            <div class="ui twelve wide column">
+                <h2 style="color:#5bc0de"><%= campgrounds.length %> Members Found</h2>
+                <div class="ui divider"></div>
+                <div class="ui massive middle aligned divided list">
+                    <% campgrounds.forEach(function(campground){ %>
+                        <div class="item">
+                                <div class="row">
+                                        <div class="content col col-md-8">
+                                            <a href="/campgrounds/<%=campground._id %>">
+                                                <%= campground.name %>
+                                            </a>
+                                        </div>
+                                            <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+                                            <div class="content col col-md-2">
+                                                <a class="ui tiny inverted orange button" href="/campgrounds/<%=campground._id%>/edit"><i class="fa fa-edit"></i>Edit</a>
+                                            </div>
+                                            <div class="content col col-md-2">
+                                                <form style="display: inline;" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
+                                                    <button class="ui tiny inverted red button"><i class="fa fa-trash"></i>Delete</button>
+                                                </form>
+                                            </div>
+                                            <%}%>
+                                </div>
+                        </div>
+                    <% });%>
+                </div>
+            </div>
+            <div class="ui four wide column">
+                <a href="/campgrounds/new" class="btn btn-info btn-large"><h4><i class="fa fa-plus"></i> Add New Member</h4></a>
+            </div>
+    </div>
+    
+</div>
+
+<% include ../partials/footer %>

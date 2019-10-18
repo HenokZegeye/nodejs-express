@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+<div class="ui container">
+    <br>
+    <h1 style="text-align:center; color:#5bc0de">Add a new Member</h1>
+    <div class="ui raised very padded text container segment">
+            <form class="ui form" action="/campgrounds" method="POST">
+                <div class="field">
+                    <input class="form-control"type="text" name="name" placeholder="name">
+                </div>
+                <div class="field">
+                    <input class="form-control" type="text" name="image" placeholder="image_url">
+                </div>
+                <div class="field">
+                    <input class="form-control" type="text" name="description" placeholder="description">
+                </div>
+                <div class="field">
+                    <input type="submit" class="btn btn-primary">
+                </div>
+            </form>
+    </div>
+</div>
+
+
+<% include ../partials/footer %>
